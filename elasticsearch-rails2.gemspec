@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 1.9.3"
 
   spec.add_dependency "elasticsearch", '>= 1.0.5'
-  spec.add_dependency "activerecord", '2.3.18'
+  spec.add_dependency "activerecord", '~> 2.3.18'
   spec.add_dependency "hashie"
 
   if RUBY_VERSION >= '2.0.0'
