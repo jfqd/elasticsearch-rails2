@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "elasticsearch", '>= 1.0.5'
   spec.add_dependency "activerecord", '~> 2.3.18'
-  spec.add_dependency "hashie"
+  spec.add_dependency "hashie", '3.4.6'
 
   if RUBY_VERSION >= '2.0.0'
     spec.add_dependency "iconv"
