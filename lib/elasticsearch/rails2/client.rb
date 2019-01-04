@@ -21,7 +21,7 @@ module Elasticsearch
         # @example Configure the client for the `Building` model
         #
         #     Building.client = Elasticsearch::Client.new host: 'http://api.server:8080'
-        #     Building.search ...
+        #     Building.elasticsearch ...
         #
         def client=(client)
           @client = client

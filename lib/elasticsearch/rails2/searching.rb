@@ -48,7 +48,7 @@ module Elasticsearch
         # @return [Hash] The response from Elasticsearch
         #
         def execute!
-          klass.client.search(@definition)
+          klass.client.elasticsearch(@definition)
         end
       end
 
@@ -65,11 +65,11 @@ module Elasticsearch
         #
         # @example Simple search in `Article`
         #
-        #     Article.search 'foo'
+        #     Article.elasticsearch 'foo'
         #
         # @example Search using a search definition as a Hash
         #
-        #     response = Article.search \
+        #     response = Article.elasticsearch \
         #                  query: {
         #                    match: {
         #                      title: 'foo'
@@ -93,9 +93,9 @@ module Elasticsearch
         #
         # @example Search using a search definition as a JSON string
         #
-        #     Article.search '{"query" : { "match_all" : {} }}'
+        #     Article.elasticsearch '{"query" : { "match_all" : {} }}'
         #
-        def search(query_or_payload, options={})
+        def elasticsearch(query_or_payload, options={})
           search = SearchRequest.new(self, query_or_payload, options)
           Response::Response.new(self, search)
         end

@@ -17,12 +17,12 @@ describe Elasticsearch::Rails2::Searching do
     expect(SearchingDummyModel).to respond_to :scan_all_ids
   end
 
-  describe ".search" do
+  describe ".elasticsearch" do
     it "should initialize the search request object" do
       expect(Elasticsearch::Rails2::Searching::SearchRequest).to receive(:new)
         .with(SearchingDummyModel, 'foo', {default_operator: 'AND'})
 
-      SearchingDummyModel.search 'foo', default_operator: 'AND'
+      SearchingDummyModel.elasticsearch 'foo', default_operator: 'AND'
     end
 
     it "should not execute the actual search" do
@@ -30,7 +30,7 @@ describe Elasticsearch::Rails2::Searching do
       search_request = double('search_request')
       allow(Elasticsearch::Rails2::Searching::SearchRequest).to receive(:new).and_return(search_request)
       expect(search_request).to_not receive(:execute!)
-      SearchingDummyModel.search 'foo'
+      SearchingDummyModel.elasticsearch 'foo'
     end
   end
 end

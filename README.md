@@ -74,7 +74,7 @@ for information about the Ruby client API.
 For starters, we can try the "simple" type of search:
 
 ```ruby
-response = Article.search 'fox dogs'
+response = Article.elasticsearch 'fox dogs'
 
 response.took
 # => 3
@@ -146,7 +146,7 @@ In most situation, you'll want to pass the search definition
 in the Elasticsearch [domain-specific language](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html) to the client:
 
 ```ruby
-response = Article.search query:     { match:  { title: "Fox Dogs" } },
+response = Article.elasticsearch query:     { match:  { title: "Fox Dogs" } },
                           highlight: { fields: { title: {} } }
 
 response.results.first.highlight.title
@@ -169,7 +169,7 @@ query = Jbuilder.encode do |json|
   end
 end
 
-response = Article.search query
+response = Article.elasticsearch query
 response.results.first.title
 # => "Quick brown fox"
 ```
